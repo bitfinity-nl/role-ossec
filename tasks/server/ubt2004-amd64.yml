@@ -1,0 +1,27 @@
+---
+# Title: OSSEC server
+#
+# Author: Bitfinity / L. Rutten 
+# Owner: Bitfinity / L. Rutten
+#
+# File: tasks/server/ubt2004-amd64.yml
+#
+# Description:
+#   This taskfile contains te tasks
+#   for installing a OSSEC server.
+#
+
+- name: "Add the GPG key"
+  ansible.builtin.apt_key:
+    url: https://www.atomicorp.com/RPM-GPG-KEY.atomicorp.txt
+    state: present
+
+- name: "Add APT repository"
+  ansible.builtin.apt_repository:
+    repo: "deb https://updates.atomicorp.com/channels/atomic/ubuntu {{ ansible_lsb.codename }} main"
+    state: present
+    
+- name: "Add APT packages"
+  ansible.builtin.apt:
+    name: ossec-hids-server
+    state: present
