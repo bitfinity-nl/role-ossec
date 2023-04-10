@@ -1,4 +1,7 @@
 # role-ossec (WIP)
 Open Source HIDS
 
-https://www.ossec.net/
+
+## Source(s)
+- https://www.ossec.net/
+- https://www.libellux.com/ossec/
