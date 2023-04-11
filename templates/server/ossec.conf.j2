@@ -1,0 +1,12 @@
+<global>
+  <allow_list>127.0.0.1</allow_list>
+  <allow_list>::1</allow_list>
+  <allow_list>localhost.localdomain</allow_list>
+  <allow_list>127.0.0.53</allow_list>
+  <allow_list>192.168.0.2</allow_list> <!-- OSSEC client -->
+</global>
+
+<remote>
+  <connection>secure</connection>
+  <allowed-ips>192.168.0.2</allowed-ips> <!-- OSSEC client -->
+</remote>
