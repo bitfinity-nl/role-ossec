@@ -1,0 +1,17 @@
+---
+
+
+ossec_user_install_type             : 'agent'
+ossec_user_delete_dir               : 'y'
+ossec_user_enable_active_response   : 'y'
+ossec_user_enable_syscheck          : 'y'
+ossec_user_enable_rootcheck         : 'y'
+ossec_user_update                   : 'y'
+ossec_user_update_rules             : 'y'
+ossec_user_agent_profile            : 'generic'
+ossec_user_enable_email             : 'y'
+ossec_user_email_address            : 'security.example.com'
+ossec_user_email_smtp               : 'smtp.example.com'
+ossec_enable_syslog                 : 'y'
+ossec_user_enable_firewall_response : 'y'
+ossec_user_white_list               : '192.168.0.1 192.168.1.0/24'
