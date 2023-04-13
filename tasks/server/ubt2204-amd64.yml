@@ -22,15 +22,20 @@
     #- mysql-dev
     state: present
 
-- name: "Add the GPG key"
-  ansible.builtin.apt_key:
-    url: https://www.atomicorp.com/RPM-GPG-KEY.atomicorp.txt
-    state: present
+#- name: "Add the GPG key"
+#  ansible.builtin.apt_key:
+#    url: https://www.atomicorp.com/RPM-GPG-KEY.atomicorp.txt
+#    state: present
 
-- name: "Add APT repository"
+#- name: "Add APT repository"
+#  ansible.builtin.apt_repository:
+#    repo: "deb https://updates.atomicorp.com/channels/atomic/ubuntu {{ ansible_lsb.codename }} main"
+#    state: present
+
+- name: "Add APT repositories"
   ansible.builtin.apt_repository:
-    repo: "deb https://updates.atomicorp.com/channels/atomic/ubuntu {{ ansible_lsb.codename }} main"
-    state: present
+    url: https://updates.atomicorp.com/installers/atomic
+    dest: /etc/apt/trusted.gpg.d/atomicorp-ossec.asc
 
 - name: "Update APT cache"
   ansible.builtin.apt:
