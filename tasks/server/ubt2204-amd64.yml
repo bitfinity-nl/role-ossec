@@ -19,7 +19,7 @@
     - libpcre2-dev
     - libevent-dev
     - libssl-dev
-    - mysql-dev
+    #- mysql-dev
     state: present
 
 - name: "Add the GPG key"
