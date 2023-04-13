@@ -1,5 +1,5 @@
 ---
 
 
-- name: "server/02-activedirectory.yml"
-  include_tasks: tasks/02-activedirectory.yml
+- name: "server/ubt2204-amd64.yml"
+  include_tasks: tasks/ubt2204-amd64.yml
