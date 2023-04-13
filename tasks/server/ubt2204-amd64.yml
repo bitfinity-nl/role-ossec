@@ -32,7 +32,7 @@
     dest: /opt/ossec-install
 
 - name: "Transfer unattended source installation file to client"
-   ansible.builtin.template:
+  ansible.builtin.template:
     src: server/preloaded-vars.conf.j2
     dest: /opt/ossec-install/preloaded-vars.conf
 
