@@ -19,32 +19,16 @@
     - libpcre2-dev
     - libevent-dev
     - libssl-dev
+    - libsystemd-dev
+    # -- for database support --
     #- mysql-dev
+    #- postgresql-dev
+    #- libsqlite3-dev
     state: present
 
-#- name: "Add the GPG key"
-#  ansible.builtin.apt_key:
-#    url: https://www.atomicorp.com/RPM-GPG-KEY.atomicorp.txt
-#    state: present
+- name: "Transfer unattended source installation file to client"
+   ansible.builtin.template:
+    src: server/preloaded-vars.conf.j2
+    dest: etc/preloaded-vars.conf
 
-#- name: "Add APT repository"
-#  ansible.builtin.apt_repository:
-#    repo: "deb https://updates.atomicorp.com/channels/atomic/ubuntu {{ ansible_lsb.codename }} main"
-#    state: present
-
-- name: "Add APT repositories"
-  ansible.builtin.apt_repository:
-    url: https://updates.atomicorp.com/installers/atomic
-    dest: /etc/apt/trusted.gpg.d/atomicorp-ossec.asc
-
-- name: "Update APT cache"
-  ansible.builtin.apt:
-    update_cache: yes
-    
-- name: "Add APT packages"
-  ansible.builtin.apt:
-    pkg:
-    - ossec-hids-server
-    #- ossec-hids-agent
-    state: present
 
