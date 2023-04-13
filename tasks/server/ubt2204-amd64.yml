@@ -38,8 +38,8 @@
 
 - name: "Install or upgrade OSSEC manager"
   ansible.builtin.shell:
-    cmd: install.sh
     chdir: /opt/ossec-install/
+    cmd: install.sh
 
 - name: "Configure UFW for OSSEC manager"
   community.general.ufw:
