@@ -26,10 +26,10 @@
     #- libsqlite3-dev
     state: present
 
-- name: "Download latest source and "
+- name: "Download latest source"
   ansible.builtin.git:
     repo: 'https://github.com/ossec/ossec-hids.git'
-    dest: /opt/
+    dest: /opt/ossec
 
 #- name: "Transfer unattended source installation file to client"
 #   ansible.builtin.template:
