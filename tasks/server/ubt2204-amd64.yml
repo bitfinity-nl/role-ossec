@@ -34,7 +34,7 @@
 - name: "Transfer unattended source installation file to client"
   ansible.builtin.template:
     src: server/preloaded-vars.conf.j2
-    dest: /opt/ossec-install/preloaded-vars.conf
+    dest: /opt/ossec-install/etc/preloaded-vars.conf
 
 - name: "Configure UFW for OSSEC manager"
   community.general.ufw:
