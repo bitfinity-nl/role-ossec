@@ -37,7 +37,7 @@
     dest: "{{ item.dest }}"
   with_items:
     - { src: server/preloaded-vars.conf.j2, dest: '/opt/ossec-install/etc/preloaded-vars.conf', desc: 'unattended source installation ' }
-    - { src: server/ossec.service.j2, dest: '/usr/lib/system/system/ossec.service', desc: 'systemd service' }
+    - { src: server/ossec.service.j2, dest: '/usr/lib/system/ossec.service', desc: 'systemd service' }
     
 - name: "Enable OSSEC service "
   ansible.builtin.systemd:
