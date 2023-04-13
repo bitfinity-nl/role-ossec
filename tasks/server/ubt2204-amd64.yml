@@ -36,6 +36,11 @@
     src: server/preloaded-vars.conf.j2
     dest: /opt/ossec-install/etc/preloaded-vars.conf
 
+- name: "Install or upgrade OSSEC manager"
+  ansible.builtin.shell: install.sh
+  args:
+    chdir: /opt/ossec-install/
+
 - name: "Configure UFW for OSSEC manager"
   community.general.ufw:
     rule: allow
