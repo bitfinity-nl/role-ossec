@@ -10,6 +10,17 @@
 #   This taskfile contains te tasks
 #   for installing a OSSEC server.
 #
+- name: "Add APT packages requirements"
+  ansible.builtin.apt:
+    pkg:
+    - build-essential
+    - make
+    - zlib1g-dev
+    - libpcre2-dev
+    - libevent-dev
+    - libssl-dev
+    - mysql-dev
+    state: present
 
 - name: "Add the GPG key"
   ansible.builtin.apt_key:
@@ -20,10 +31,15 @@
   ansible.builtin.apt_repository:
     repo: "deb https://updates.atomicorp.com/channels/atomic/ubuntu {{ ansible_lsb.codename }} main"
     state: present
+
+- name: "Update APT cache"
+  ansible.builtin.apt:
+    update_cache: yes
     
 - name: "Add APT packages"
   ansible.builtin.apt:
     pkg:
     - ossec-hids-server
-    - ossec-hids-agent
+    #- ossec-hids-agent
     state: present
+
