@@ -37,9 +37,7 @@
     dest: /opt/ossec-install/etc/preloaded-vars.conf
 
 - name: "Install or upgrade OSSEC manager"
-  ansible.builtin.shell:
-    chdir: /opt/ossec-install/
-    cmd: install.sh
+  ansible.builtin.shell: /opt/ossec-install/install.sh
 
 - name: "Configure UFW for OSSEC manager"
   community.general.ufw:
