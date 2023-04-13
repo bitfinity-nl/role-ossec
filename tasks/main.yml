@@ -1,0 +1,5 @@
+---
+
+
+- name: "server/02-activedirectory.yml"
+  include_tasks: tasks/02-activedirectory.yml
