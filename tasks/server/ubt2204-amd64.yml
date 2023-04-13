@@ -37,7 +37,7 @@
     dest: /opt/ossec-install/etc/preloaded-vars.conf
 
 - name: "Install or upgrade OSSEC manager"
-  ansible.builtin.shell: install.sh
+  ansible.builtin.shell: ./install.sh
   args:
     chdir: /opt/ossec-install/
 
