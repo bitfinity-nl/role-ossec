@@ -27,7 +27,9 @@
     state: present
 
 - name: "Download latest source and "
-
+  ansible.builtin.git:
+    repo: 'https://github.com/ossec/ossec-hids.git'
+    dest: /opt/
 
 #- name: "Transfer unattended source installation file to client"
 #   ansible.builtin.template:
