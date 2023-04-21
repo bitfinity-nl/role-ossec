@@ -27,10 +27,15 @@
     #- libsqlite3-dev
     state: present
 
-- name: "Download latest source"
+- name: "Download latest source of OSSEC"
   ansible.builtin.git:
     repo: 'https://github.com/ossec/ossec-hids.git'
     dest: /opt/ossec-install
+
+- name: "Download latest source of PCRE2 support"
+  ansible.builtin.git:
+    repo: 'https://github.com/PCRE2Project/pcre2.git'
+    dest: /opt/ossec-install/src/external/
 
 - name: "Transfer configuration files to client"
   ansible.builtin.template:
