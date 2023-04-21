@@ -35,7 +35,7 @@
 - name: "Download latest source of PCRE2 support"
   ansible.builtin.git:
     repo: 'https://github.com/PCRE2Project/pcre2.git'
-    dest: /opt/ossec-install/src/external/
+    dest: /tmp/pcre2
 
 - name: "Transfer configuration files to client"
   ansible.builtin.template:
