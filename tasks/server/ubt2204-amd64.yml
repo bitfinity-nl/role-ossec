@@ -1,0 +1,53 @@
+---
+# Title: OSSEC server
+#
+# Author: Bitfinity / L. Rutten 
+# Owner: Bitfinity / L. Rutten
+#
+# File: tasks/server/ubt2204-amd64.yml
+#
+# Description:
+#   This taskfile contains te tasks
+#   for installing a OSSEC server.
+#
+- name: "Add APT packages requirements"
+  ansible.builtin.apt:
+    pkg:
+    - build-essential
+    - make
+    - zlib1g-dev
+    - libpcre2-dev
+    - libevent-dev
+    - libssl-dev
+    - libsystemd-dev
+    # -- for database support --
+    #- mysql-dev
+    #- postgresql-dev
+    #- libsqlite3-dev
+    state: present
+
+- name: "Download latest source"
+  ansible.builtin.git:
+    repo: 'https://github.com/ossec/ossec-hids.git'
+    dest: /opt/ossec-install
+
+- name: "Transfer configuration files to client"
+  ansible.builtin.template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - { src: server/preloaded-vars.conf.j2, dest: '/opt/ossec-install/etc/preloaded-vars.conf', desc: 'unattended source installation ' }
+    - { src: server/ossec.service.j2, dest: '/etc/systemd/system/ossec.service', desc: 'systemd service' }
+    
+- name: "Enable OSSEC service "
+  ansible.builtin.systemd:
+    name: ossec.service
+    daemon_reload: true
+    enabled: true
+    state: started
+
+- name: "Configure UFW for OSSEC manager"
+  community.general.ufw:
+    rule: allow
+    port: '1514'
+    proto: udp
