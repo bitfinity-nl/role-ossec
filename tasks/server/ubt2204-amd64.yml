@@ -46,14 +46,14 @@
     dest: "{{ item.dest }}"
   with_items:
     - { src: server/preloaded-vars.conf.j2, dest: '/opt/ossec-install/etc/preloaded-vars.conf', desc: 'unattended source installation ' }
-#    - { src: server/ossec.service.j2, dest: '/etc/systemd/system/ossec.service', desc: 'systemd service' }
+    - { src: server/ossec.service.j2, dest: '/etc/systemd/system/ossec.service', desc: 'systemd service' }
     
-#- name: "Enable OSSEC service "
-#  ansible.builtin.systemd:
-#    name: ossec.service
-#    daemon_reload: true
-#    enabled: true
-#    state: started
+- name: "Enable OSSEC service "
+  ansible.builtin.systemd:
+    name: ossec.service
+    daemon_reload: true
+    enabled: true
+    state: started
 
 - name: "Configure UFW for OSSEC manager"
   community.general.ufw:
