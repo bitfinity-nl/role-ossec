@@ -13,3 +13,4 @@ sudo /var/ossec/bin/ossec-logtest -t
 - https://hackertarget.com/ossec-introduction-and-installation-guide/
 - https://www.youtube.com/watch?v=PwpPR-Mk7Bk
 - https://marc.info/?l=security-onion&m=149576468915881&w=2
+- https://www.digitalocean.com/community/tutorials/how-to-upgrade-ossec-2-8-1-to-ossec-2-8-2
