@@ -26,8 +26,15 @@
     #- postgresql-dev
     #- libsqlite3-dev
     state: present
+  
+- name: "Remove existing installation folders when exists"
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - /opt/ossec-install
+    - /tmp/pcre2
 
-- name: "Check if installation folder /etc/ already exists"
 
 - name: "Download latest source of OSSEC"
   ansible.builtin.git:
