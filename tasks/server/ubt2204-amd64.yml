@@ -27,6 +27,8 @@
     #- libsqlite3-dev
     state: present
 
+- name: "Check if installation folder /etc/ already exists"
+
 - name: "Download latest source of OSSEC"
   ansible.builtin.git:
     repo: 'https://github.com/ossec/ossec-hids.git'
@@ -50,7 +52,7 @@
     
 - name: "Enable OSSEC service "
   ansible.builtin.systemd:
-    name: ossec.service
+    name: ossec-control.service
     daemon_reload: true
     enabled: true
     state: started
