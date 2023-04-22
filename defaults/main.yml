@@ -1,6 +1,6 @@
 ---
 
-
+# -- Installation --
 ossec_user_install_type             : 'agent'
 ossec_user_delete_dir               : 'y'
 ossec_user_enable_active_response   : 'y'
@@ -15,3 +15,9 @@ ossec_user_email_smtp               : 'smtp.example.com'
 ossec_enable_syslog                 : 'y'
 ossec_user_enable_firewall_response : 'y'
 ossec_user_white_list               : '192.168.0.1 192.168.1.0/24'
+
+# -- Initial basic ossec-control (server) configuration --
+ossec_email_notification            : 'yes'
+ossec_email_to                      : 'daniel\.cid@example\.com'
+ossec_smtp_server                   : 'smtp\.example\.com\.'
+ossec_email_from                    : 'ossecm@ossec\.example\.com\.'
