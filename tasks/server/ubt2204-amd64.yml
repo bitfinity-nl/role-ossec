@@ -59,6 +59,15 @@
 - name: "Install or upgrade ossec server"
   ansible.builtin.shell: cd /opt/ossec-install/ ; PCRE2_SYSTEM=yes ./install.sh
 
+- name: "Create symbolic link from /opt/ossec-install/etc to /etc/ossec"
+  ansible.builtin.file:
+    src: /opt/ossec-install/etc
+    dest: /etc/ossec
+    owner: root
+    group: root
+    mode: '0755'
+    state: link
+    
 #- name: "Initial basic configuration settings (/var/ossec/etc/ossec.conf)"
 #  ansible.builtin.replace:
 #    path: /var/ossec/etc/ossec.conf
