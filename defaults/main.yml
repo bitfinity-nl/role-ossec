@@ -1,6 +1,12 @@
 ---
 
 # -- Installation --
+#
+#
+# Informational:
+#   The mail adress wil be only set on initial installation.
+#   If you want to change it afterwards, set it manual in /var/ossec/etc/ossec.conf. 
+#
 ossec_user_install_type             : 'agent'
 ossec_user_delete_dir               : 'y'
 ossec_user_enable_active_response   : 'y'
