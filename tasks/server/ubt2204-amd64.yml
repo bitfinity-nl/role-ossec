@@ -59,17 +59,17 @@
 - name: "Install or upgrade ossec server"
   ansible.builtin.shell: cd /opt/ossec-install/ ; PCRE2_SYSTEM=yes ./install.sh
 
-- name: "Initial basic configuration settings (/var/ossec/etc/ossec.conf)"
-  ansible.builtin.replace:
-    path: /var/ossec/etc/ossec.conf
-    regexp: "{{ item.find }}"
-    replace: '{{ item.replace }}'
-    backup: true
-  with_items:
+#- name: "Initial basic configuration settings (/var/ossec/etc/ossec.conf)"
+#  ansible.builtin.replace:
+#    path: /var/ossec/etc/ossec.conf
+#    regexp: "{{ item.find }}"
+#    replace: '{{ item.replace }}'
+#    backup: true
+#  with_items:
     #- { field: 'email_notification>', find: 'yes', replace: '{{ ossec_email_notification }}' }
-    - { field: 'email_to', find: 'daniel\.cid@example\.com', replace: '{{ ossec_email_to }}' }
-    - { field: 'smtp_server', find: 'smtp\.example\.com\.', replace: '{{ ossec_smtp_server }}' }
-    - { field: 'email_from', find: 'ossecm@ossec\.example\.com\.', replace: '{{ ossec_email_from }}' }
+#    - { field: 'email_to', find: 'daniel\.cid@example\.com', replace: '{{ ossec_email_to }}' }
+#    - { field: 'smtp_server', find: 'smtp\.example\.com\.', replace: '{{ ossec_smtp_server }}' }
+#    - { field: 'email_from', find: 'ossecm@ossec\.example\.com\.', replace: '{{ ossec_email_from }}' }
 
 - name: "Enable OSSEC service "
   ansible.builtin.systemd:
