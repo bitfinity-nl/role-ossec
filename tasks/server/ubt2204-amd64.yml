@@ -88,10 +88,8 @@
     insertbefore: "</global>"
     block: |2
           <allow_list>{{ item.ip }}</allow_list>
-  loop:
-    - { name: host1, ip: 10.10.1.10 }
-    - { name: host2, ip: 10.10.1.11 }
-    - { name: host3, ip: 10.10.1.12 }
+  loop: "{{ ossec_allowlist }}"
+
 
 
 
