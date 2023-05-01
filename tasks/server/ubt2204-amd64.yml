@@ -81,7 +81,7 @@
 #    - { field: 'email_from', find: 'ossecm@ossec\.example\.com\.', replace: '{{ ossec_email_from }}' }
 
 
-- name: Add mappings to /var/ossec/etc/ossec.conf
+- name: "Add ip to allowlist in global section (/var/ossec/etc/ossec.conf)"
   ansible.builtin.blockinfile:
     path: /var/ossec/etc/ossec.conf
     marker: "    <!-- {mark} ANSIBLE MANAGED BLOCK - {{ item.name }}-->"
