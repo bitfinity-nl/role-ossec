@@ -86,7 +86,7 @@
     path: /var/ossec/etc/ossec.conf
     marker: "    <!-- {mark} ANSIBLE MANAGED BLOCK -->"
     insertbefore: "</global>"
-    block: |
+    block: |2
           <allow_list>{{ item.ip }}</allow_list>
   loop:
     - { name: host1, ip: 10.10.1.10 }
