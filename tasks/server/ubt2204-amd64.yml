@@ -84,7 +84,7 @@
 - name: "Add ip to allowlist in global section (/var/ossec/etc/ossec.conf)"
   ansible.builtin.blockinfile:
     path: /var/ossec/etc/ossec.conf
-    marker: "    <!-- {mark} ANSIBLE MANAGED BLOCK - {{ item.name }}-->"
+    marker: "    <!-- {mark} ANSIBLE MANAGED BLOCK - Allow list {{ item.name }}-->"
     insertbefore: "</global>"
     block: |2
           <allow_list>{{ item.ip }}</allow_list>
@@ -93,8 +93,8 @@
 - name: "Add ip to remote systelog in global section (/var/ossec/etc/ossec.conf)"
   ansible.builtin.blockinfile:
     path: /var/ossec/etc/ossec.conf
-    marker: "    <!-- {mark} ANSIBLE MANAGED BLOCK - {{ item.name }}-->"
-    insertbefore: "  </remote>"
+    marker: "    <!-- {mark} ANSIBLE MANAGED BLOCK - Remote syslog {{ item.name }}-->"
+    insertbefore: "</remote>"
     block: |2
           <allowed-ips>{{ item.ip }}</allowed-ips>
   loop: "{{ ossec_clients_allow_list }}"
