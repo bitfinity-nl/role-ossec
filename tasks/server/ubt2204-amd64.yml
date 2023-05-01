@@ -88,11 +88,16 @@
     insertbefore: "</global>"
     block: |2
           <allow_list>{{ item.ip }}</allow_list>
-  loop: "{{ ossec_allow_list }}"
+  loop: "{{ ossec_client_allow_list }}"
 
-
-
-
+- name: "Add ip to remote systelog in global section (/var/ossec/etc/ossec.conf)"
+  ansible.builtin.blockinfile:
+    path: /var/ossec/etc/ossec.conf
+    marker: "    <!-- {mark} ANSIBLE MANAGED BLOCK - {{ item.name }}-->"
+    insertbefore: "</remote>"
+    block: |2
+          <allowed-ips>{{ item.ip }}</allowed-ips>
+  loop: "{{ ossec_client_allow_list }}"
 
 - name: "Enable OSSEC service "
   ansible.builtin.systemd:
