@@ -80,6 +80,23 @@
 #    - { field: 'smtp_server', find: 'smtp\.example\.com\.', replace: '{{ ossec_smtp_server }}' }
 #    - { field: 'email_from', find: 'ossecm@ossec\.example\.com\.', replace: '{{ ossec_email_from }}' }
 
+
+- name: Add mappings to /var/ossec/etc/ossec.conf
+  ansible.builtin.blockinfile:
+    path: /var/ossec/etc/ossec.conf
+    marker: "<!-- {mark} ANSIBLE MANAGED BLOCK -->"
+    insertbefore: "</global>"
+    block: |
+      <allow_list>{{ item.ip }}</allow_list>
+    marker: "# {mark} ANSIBLE MANAGED BLOCK {{ item.name }}"
+  loop:
+    - { name: host1, ip: 10.10.1.10 }
+    - { name: host2, ip: 10.10.1.11 }
+    - { name: host3, ip: 10.10.1.12 }
+
+
+
+
 - name: "Enable OSSEC service "
   ansible.builtin.systemd:
     name: ossec-control.service
