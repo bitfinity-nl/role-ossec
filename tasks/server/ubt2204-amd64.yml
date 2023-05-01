@@ -99,6 +99,20 @@
           <allowed-ips>{{ item.ip }}</allowed-ips>
   loop: "{{ ossec_clients_allow_list }}"
 
+- name: "Add ip to remote systelog in global section (/var/ossec/etc/ossec.conf)"
+  ansible.builtin.blockinfile:
+    path: /var/ossec/etc/ossec.conf
+    marker: "    <!-- {mark} ANSIBLE MANAGED BLOCK - Repeated offenders -->"
+    insertafter: "<!-- Active Response Config -->"
+    block: |2
+          <allowed-ips>{{ item.ip }}</allowed-ips>
+          <active-response>
+            <!-- Specify a comma seperated list of timeouts per
+              - re-incidence (in minutes).
+              -->
+             <repeated_offenders>{{ ossec_repeated_offenders }}</repeated_offenders>
+          </active-response>
+          
 - name: "Enable OSSEC service "
   ansible.builtin.systemd:
     name: ossec-control.service
