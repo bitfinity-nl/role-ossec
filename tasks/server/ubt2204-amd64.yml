@@ -105,7 +105,6 @@
     marker: "    <!-- {mark} ANSIBLE MANAGED BLOCK - Repeated offenders -->"
     insertafter: "<!-- Active Response Config -->"
     block: |2
-          <allowed-ips>{{ item.ip }}</allowed-ips>
           <active-response>
             <!-- Specify a comma seperated list of timeouts per
               - re-incidence (in minutes).
