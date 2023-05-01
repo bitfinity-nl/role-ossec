@@ -61,7 +61,7 @@
 
 - name: "Create symbolic link from /opt/ossec-install/etc to /etc/ossec"
   ansible.builtin.file:
-    src: /opt/ossec-install/etc
+    src: /var/ossec/etc
     dest: /etc/ossec
     owner: root
     group: root
