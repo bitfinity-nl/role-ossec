@@ -94,7 +94,7 @@
   ansible.builtin.blockinfile:
     path: /var/ossec/etc/ossec.conf
     marker: "    <!-- {mark} ANSIBLE MANAGED BLOCK - {{ item.name }}-->"
-    insertbefore: "</remote>"
+    insertbefore: "  </remote>"
     block: |2
           <allowed-ips>{{ item.ip }}</allowed-ips>
   loop: "{{ ossec_clients_allow_list }}"
