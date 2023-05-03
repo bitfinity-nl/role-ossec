@@ -1,4 +1,16 @@
 ---
+# -- OSSEC Agent --
+#
+#
+ossec_agent_user_install_type             : 'agent'
+ossec_agent_user_enable_active_response   : 'y'
+ossec_agent_user_enable_syscheck          : 'y'
+ossec_agent_user_enable_rootcheck         : 'y'
+ossec_agent_user_update                   : 'y'
+ossec_agent_user_update_rules             : 'y'
+ossec_agent_user_agent_server_ip          : '127.0.0.1'
+ossec_agent_user_agent_profile            : 'generic'
+
 
 # -- OSSEC Server/Manager --
 #
@@ -7,7 +19,7 @@
 #   The mail adress wil be only set on initial installation.
 #   If you want to change it afterwards, set it manual in /var/ossec/etc/ossec.conf. 
 #
-ossec_user_install_type             : 'agent'
+ossec_user_install_type             : 'server'
 ossec_user_delete_dir               : 'y'
 ossec_user_enable_active_response   : 'y'
 ossec_user_enable_syscheck          : 'y'
@@ -36,3 +48,7 @@ ossec_clients_allow_list :
 
 # -- Section: Active Response --
 ossec_repeated_offenders            : '30,60,120,240,480'
+
+
+
+
