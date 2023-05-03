@@ -133,5 +133,8 @@
     port: '1514'
     proto: udp
 
+#- name: "Install OSSEC Agent (Include tasks/agent/ossec-agent-ubuntu-2204.yml)"
+#  include_tasks: tasks/agent/ossec-agent-ubuntu-2204.yml
+
 - name: "Install OSSEC Agent (Include tasks/agent/ossec-agent-ubuntu-2204.yml)"
-  include_tasks: tasks/agent/ossec-agent-ubuntu-2204.yml
+  include_tasks: agent/ossec-agent-ubuntu-2204.yml
