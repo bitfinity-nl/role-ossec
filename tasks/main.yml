@@ -2,9 +2,9 @@
 
 
 - name: "server/ubt2204-amd64.yml"
-  include_tasks: tasks/server/ubt2204-amd64.yml
+  include_tasks: server/ubt2204-amd64.yml
   when: ossec_agent_user_install_type == 'server'
   
-- name: "agent/ubt2204-amd64.yml"
-  include_tasks: tasks/agent/ubt2204-amd64.yml
+- name: "agent/ossec-agent-ubuntu-2204.yml"
+  include_tasks: agent/ossec-agent-ubuntu-2204.yml 
   when: ossec_agent_user_install_type == 'agent'
