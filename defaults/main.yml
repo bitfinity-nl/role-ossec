@@ -1,6 +1,6 @@
 ---
 
-# -- Installation --
+# -- OSSEC Server/Manager --
 #
 #
 # Informational:
@@ -23,10 +23,10 @@ ossec_user_enable_firewall_response : 'y'
 ossec_user_white_list               : '192.168.0.1 192.168.1.0/24'
 
 # -- Initial basic ossec-control (server) configuration --
-ossec_email_notification            : 'yes'
-ossec_email_to                      : 'daniel\.cid@example\.com'
-ossec_smtp_server                   : 'smtp\.example\.com\.'
-ossec_email_from                    : 'ossecm@ossec\.example\.com\.'
+#ossec_email_notification            : 'yes'
+#ossec_email_to                      : 'daniel\.cid@example\.com'
+#ossec_smtp_server                   : 'smtp\.example\.com\.'
+#ossec_email_from                    : 'ossecm@ossec\.example\.com\.'
 
 # Section(s): Allow list and Remote syslog (Clients) -- 
 ossec_clients_allow_list : 
