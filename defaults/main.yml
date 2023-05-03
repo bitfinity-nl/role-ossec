@@ -8,7 +8,7 @@ ossec_agent_user_enable_syscheck          : 'y'
 ossec_agent_user_enable_rootcheck         : 'y'
 ossec_agent_user_update                   : 'y'
 ossec_agent_user_update_rules             : 'y'
-ossec_agent_user_agent_server_ip          : '127.0.0.1'
+ossec_agent_user_agent_server_ip          : '{{ ansible_default_ipv4.address }}'
 ossec_agent_user_agent_profile            : 'generic'
 
 
