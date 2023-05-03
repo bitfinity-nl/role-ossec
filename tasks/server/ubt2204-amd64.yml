@@ -102,15 +102,15 @@
 - name: "Add ip to remote systelog in global section (/var/ossec/etc/ossec.conf)"
   ansible.builtin.blockinfile:
     path: /var/ossec/etc/ossec.conf
-    marker: "    <!-- {mark} ANSIBLE MANAGED BLOCK - Repeated offenders -->"
+    marker: "   <!-- {mark} ANSIBLE MANAGED BLOCK - Repeated offenders -->"
     insertafter: "<!-- Active Response Config -->"
     block: |2
-          <active-response>
-            <!-- Specify a comma seperated list of timeouts per
-              - re-incidence (in minutes).
-              -->
-            <repeated_offenders>{{ ossec_repeated_offenders }}</repeated_offenders>
-          </active-response>
+         <active-response>
+           <!-- Specify a comma seperated list of timeouts per
+             - re-incidence (in minutes).
+             -->
+           <repeated_offenders>{{ ossec_repeated_offenders }}</repeated_offenders>
+         </active-response>
 
 #- name: "Add PSAD Intrusion Dectection rules in global section (/var/ossec/etc/ossec.conf)"
 #  ansible.builtin.blockinfile:
