@@ -111,6 +111,14 @@
               -->
              <repeated_offenders>{{ ossec_repeated_offenders }}</repeated_offenders>
           </active-response>
+
+- name: "Add PSAD Intrusion Dectection rules in global section (/var/ossec/etc/ossec.conf)"
+  ansible.builtin.blockinfile:
+    path: /var/ossec/etc/ossec.conf
+    marker: "    <!-- {mark} ANSIBLE MANAGED BLOCK - PSAD Intrusion Dectection -->"
+    insertbefore: "<include>local_rules.xml</include>"
+    block: |2
+              <include>psad_rules.xml</include>
           
 - name: "Enable OSSEC service "
   ansible.builtin.systemd:
