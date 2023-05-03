@@ -55,11 +55,6 @@
   with_items:
     - { src: 'server/preloaded-vars.conf.j2', dest: '/opt/ossec-install/etc/preloaded-vars.conf', desc: 'unattended source installation ' }
     - { src: 'server/ossec-control.service.j2', dest: '/etc/systemd/system/ossec-control.service', desc: 'systemd service' }
-
-- name: "Remove /var/ossec/etc/ossec.conf, reconstruction after install"
-  ansible.builtin.file:
-    path: /var/ossec/etc/ossec.conf
-    state: absent
     
 - name: "Install or upgrade ossec server"
   ansible.builtin.shell: cd /opt/ossec-install/ ; PCRE2_SYSTEM=yes ./install.sh
