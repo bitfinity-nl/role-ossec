@@ -103,7 +103,7 @@
   ansible.builtin.blockinfile:
     path: /var/ossec/etc/ossec.conf
     marker: "    <!-- {mark} ANSIBLE MANAGED BLOCK - Repeated offenders -->"
-    insertafter: "<!-- Active Response Config -->"\n
+    insertafter: "<!-- Active Response Config --> \n"
     block: |2
          <active-response>
            <!-- Specify a comma seperated list of timeouts per
