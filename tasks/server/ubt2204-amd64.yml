@@ -115,7 +115,7 @@
 - name: "Add PSAD settings to Active Response section (/var/ossec/etc/ossec.conf)"
   ansible.builtin.lineinfile:
     path: /var/ossec/etc/ossec.conf
-    regexp: '<include>local_rules\.xml<\/include>'
+    #regexp: '<include>local_rules\.xml<\/include>'
     insertbefore: '<include>local_rules.xml</include>'
     line: '    <include>psad_rules.xml</include>'
     state: present
