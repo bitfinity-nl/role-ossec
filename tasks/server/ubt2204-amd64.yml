@@ -102,7 +102,9 @@
 - name: "Add ip to remote systelog in global section (/var/ossec/etc/ossec.conf)"
   ansible.builtin.blockinfile:
     path: /var/ossec/etc/ossec.conf
-    marker: "  <!-- {mark} ANSIBLE MANAGED BLOCK - Repeated offenders --> \n"
+    #marker: "  <!-- {mark} ANSIBLE MANAGED BLOCK - Repeated offenders --> \n"
+    marker_begin: "  <!-- {mark} ANSIBLE MANAGED BLOCK - Repeated offenders -->
+    marker_end: "<!-- {mark} ANSIBLE MANAGED BLOCK - Repeated offenders --> \n"
     insertafter: "<!-- Active Response Config -->"
     block: |2
         <active-response>
