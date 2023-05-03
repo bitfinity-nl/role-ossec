@@ -116,8 +116,9 @@
   ansible.builtin.lineinfile:
     path: /var/ossec/etc/ossec.conf
     regexp: '<include>local_rules\.xml<\/include>'
-    insertbefore: '<include>local_rules\.xml<\/include>'
-    line: '    <include>psad_rules.xml<\/include> \n     <include>local_rules\.xml<\/include>'
+    insertbefore: '<include>local_rules.xml</include>'
+    line: '    <include>psad_rules.xml</include>'
+    state: present
 
 - name: "Enable OSSEC service"
   ansible.builtin.systemd:
