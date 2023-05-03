@@ -40,7 +40,6 @@ USER_DIR="/var/ossec"
 # If USER_DELETE_DIR is set to "y", the directory
 # to install OSSEC will be removed if present.
 #USER_DELETE_DIR="y"
-USER_DELETE_DIR="{{ ossec_agent_user_delete_dir }}"
 
 # If USER_ENABLE_ACTIVE_RESPONSE is set to "n",
 # active response will be disabled.
@@ -82,7 +81,7 @@ USER_UPDATE_RULES="{{ ossec_agent_user_update_rules }}"
 # Choose only one, not both.
 # USER_AGENT_SERVER_IP="1.2.3.4"
 # USER_AGENT_SERVER_NAME
-USER_AGENT_SERVER_NAME
+USER_AGENT_SERVER_IP="{{ ossec_agent_user_agent_server_name }}"
 
 # USER_AGENT_CONFIG_PROFILE specifies the agent's config profile
 # name. This is used to create agent.conf configuration profiles
@@ -90,43 +89,6 @@ USER_AGENT_SERVER_NAME
 # Can be any string. E.g. LinuxDBServer or WindowsDomainController
 #USER_AGENT_CONFIG_PROFILE="generic"
 USER_AGENT_CONFIG_PROFILE="{{ ossec_agent_user_agent_profile }}"
-
-### Server/Local Installation variables. ###
-
-# USER_ENABLE_EMAIL enables or disables email alerting.
-#USER_ENABLE_EMAIL="y"
-USER_ENABLE_EMAIL="{{ ossec_agent_user_enable_email }}"
-
-# USER_EMAIL_ADDRESS defines the destination e-mail of the alerts.
-#USER_EMAIL_ADDRESS="dcid@test.ossec.net"
-USER_EMAIL_ADDRESS="{{ ossec_agent_user_email_address }}"
-
-# USER_EMAIL_SMTP defines the SMTP server to send the e-mails.
-#USER_EMAIL_SMTP="test.ossec.net"
-USER_EMAIL_SMTP="{{ ossec_agent_user_email_smtp }}"
-
-# USER_ENABLE_SYSLOG enables or disables remote syslog.
-#USER_ENABLE_SYSLOG="y"
-USER_ENABLE_SYSLOG="{{ ossec_agent_enable_syslog }}"
-
-
-# USER_ENABLE_FIREWALL_RESPONSE enables or disables
-# the firewall response.
-#USER_ENABLE_FIREWALL_RESPONSE="y"
-USER_ENABLE_FIREWALL_RESPONSE="{{ ossec_agent_user_enable_firewall_response }}"
-
-# Enable PF firewall (OpenBSD and FreeBSD only)
-#USER_ENABLE_PF="y"
-
-
-# PF table to use (OpenBSD and FreeBSD only).
-#USER_PF_TABLE="ossec_fwtable"
-
-
-# USER_WHITE_LIST is a list of IPs or networks
-# that are going to be set to never be blocked.
-#USER_WHITE_LIST="192.168.2.1 192.168.1.0/24"
-USER_WHITE_LIST="{{ ossec_agent_user_white_list }}"
 
 #### exit ? ###
 
