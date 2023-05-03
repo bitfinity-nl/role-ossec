@@ -116,7 +116,7 @@
   ansible.builtin.blockinfile:
     path: /var/ossec/etc/ossec.conf
     marker: "    <!-- {mark} ANSIBLE MANAGED BLOCK - PSAD Intrusion Dectection -->"
-    insertafter: "<include>local_rules.xml</include>"
+    insertafter: "<include>unbound_rules.xml</include>"
     block: |2
           <include>psad_rules.xml</include>
 
