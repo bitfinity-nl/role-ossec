@@ -10,3 +10,27 @@
 #   This taskfile install the OSSEC
 #   agent on this system.
 #
+- name: "Add APT packages requirements"
+  ansible.builtin.apt:
+    pkg:
+    - build-essential
+    - zlib1g-dev
+    - libpcre2-dev
+    - libevent-dev
+    - libssl-dev
+    state: present
+
+- name: "Remove existing installation folders when exists"
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - /opt/ossec-agent-install
+    - /tmp/pcre2
+    
+- name: "Download latest source of OSSEC"
+  ansible.builtin.git:
+    repo: 'https://github.com/ossec/ossec-hids.git'
+    dest: /opt/ossec-agent-install
+
+- name: 
