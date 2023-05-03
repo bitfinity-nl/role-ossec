@@ -1,0 +1,12 @@
+---
+# Title: OSSEC Agent
+#
+# Author: Bitfinity / L. Rutten
+# Owner: Bitfinity / L. Rutten
+#
+# file: tasks/agents/ossec-agent-ubuntu-2204.yml
+#
+# Description:
+#   This taskfile install the OSSEC
+#   agent on this system.
+#
