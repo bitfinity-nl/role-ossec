@@ -119,7 +119,7 @@
     insertbefore: "<include>local_rules.xml</include>"
     block: |2
           <include>psad_rules.xml</include>
-          
+
 - name: "Enable OSSEC service "
   ansible.builtin.systemd:
     name: ossec-control.service
