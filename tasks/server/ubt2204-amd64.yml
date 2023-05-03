@@ -116,7 +116,7 @@
   ansible.builtin.blockinfile:
     path: /var/ossec/etc/ossec.conf
     marker: "    <!-- {mark} ANSIBLE MANAGED BLOCK - PSAD -->"
-    insertbefore: "local_rules.xml"
+    #insertbefore: "local_rules.xml"
     block: |2
           <include>psad_rules.xml</include>
           
