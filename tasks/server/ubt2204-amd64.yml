@@ -113,14 +113,13 @@
           </active-response>
 
 - name: "Add PSAD settings to Active Response section (/var/ossec/etc/ossec.conf)"
-  ansible.builtin.blockinfile:
+  ansible.builtin.lineinfile:
     path: /var/ossec/etc/ossec.conf
-    marker: "    <!-- {mark} ANSIBLE MANAGED BLOCK - PSAD -->"
-    insertafter: "<rules>"
-    block: |2
-          <include>psad_rules.xml</include>
+    search_string: '<include>local_rules\.xml<\/include>'
+    insertbefore: '<include>local_rules\.xml<\/include>'
+    line: '    <include>psad_rules.xml</include>'
 
-- name: "Enable OSSEC service "
+- name: "Enable OSSEC service"
   ansible.builtin.systemd:
     name: ossec-control.service
     daemon_reload: true
