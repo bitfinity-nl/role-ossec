@@ -105,12 +105,12 @@
     marker: "    <!-- {mark} ANSIBLE MANAGED BLOCK - Repeated offenders -->"
     insertafter: "<!-- Active Response Config --> \n"
     block: |2
-         <active-response>
-           <!-- Specify a comma seperated list of timeouts per
+          <active-response>
+            <!-- Specify a comma seperated list of timeouts per
              - re-incidence (in minutes).
              -->
             <repeated_offenders>{{ ossec_repeated_offenders }}</repeated_offenders>
-         </active-response>
+          </active-response>
 
 - name: "Add PSAD Intrusion Dectection rules in global section (/var/ossec/etc/ossec.conf)"
   ansible.builtin.blockinfile:
