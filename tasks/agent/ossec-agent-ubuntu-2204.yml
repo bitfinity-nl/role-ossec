@@ -49,7 +49,7 @@
     - { src: 'agent/preloaded-vars.conf.j2', dest: '/opt/ossec-agent-install/etc/preloaded-vars.conf', desc: 'unattended source installation ' }
     #- { src: server/ossec-control.service.j2, dest: '/etc/systemd/system/ossec-control.service', desc: 'systemd service' }
 
-- name: "Install or upgrade ossec server"
+- name: "Install or upgrade ossec agent"
   ansible.builtin.shell: cd /opt/ossec-agent-install/ ; PCRE2_SYSTEM=yes ./install.sh
   
   
