@@ -102,7 +102,7 @@
 - name: "Add setting for repeating offenders Active Response section (/var/ossec/etc/ossec.conf)"
   ansible.builtin.blockinfile:
     path: /var/ossec/etc/ossec.conf
-    marker: "   <!-- {mark} ANSIBLE MANAGED BLOCK - Repeated offenders -->"
+    marker: "    <!-- {mark} ANSIBLE MANAGED BLOCK - Repeated offenders -->"
     insertafter: "<!-- Active Response Config -->"
     block: |2
           <active-response>
