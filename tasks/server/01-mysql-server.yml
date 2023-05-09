@@ -37,6 +37,6 @@
       -  /opt/docker/guacamole/mysql/:/docker-entrypoint-initdb.d
     env:
       MYSQL_ROOT_PASSWORD: "{{ mysql_administrative_password }}"
-      MYSQL_DATABASE: "guacamoledb"
-      MYSQL_USER: "guacamoledb"
+      MYSQL_DATABASE: "ossec"
+      MYSQL_USER: "ossec"
       MYSQL_PASSWORD: "{{ mysql_database_pass }}"
