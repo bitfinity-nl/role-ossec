@@ -52,9 +52,9 @@
 - name: "Install or upgrade ossec agent"
   ansible.builtin.shell: cd /opt/ossec-agent-install/ ; PCRE2_SYSTEM=yes ./install.sh
   
-- name: "Add setting for repeating offenders Active Response section (/var/ossec/etc/ossec.conf)"
+- name: "Add setting for repeating offenders Active Response section (/var/ossec/etc/ossec.conf) (WIP)"
   ansible.builtin.blockinfile:
-    path: /var/ossec/etc/ossec.conf
+    path: /var/ossec-agent/etc/ossec.conf
     marker: "    <!-- {mark} ANSIBLE MANAGED BLOCK - Repeated offenders -->"
     insertafter: "<!-- Active Response Config -->"
     block: |2
