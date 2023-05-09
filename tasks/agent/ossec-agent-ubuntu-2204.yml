@@ -55,9 +55,10 @@
 - name: "Add setting for repeating offenders Active Response section (/var/ossec/etc/ossec.conf) (WIP)"
   ansible.builtin.blockinfile:
     path: /var/ossec-agent/etc/ossec.conf
-    marker: "    <!-- {mark} ANSIBLE MANAGED BLOCK - Repeated offenders -->"
-    insertafter: "<!-- Active Response Config -->"
+    marker: "    <!-- {mark} ANSIBLE MANAGED BLOCK - Repeated offenders, Active Response -->"
+    insertafter: "</rootcheck>"
     block: |2
+    
           <command>
              <name>firewall-drop</name>
              <executable>firewall-drop.sh</executable>
