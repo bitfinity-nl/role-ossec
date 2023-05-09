@@ -4,7 +4,7 @@
 # Author: Bitfinity / L. Rutten
 # Owner: Bitfinity / L. Rutten
 #
-# File: tasks/02-mysql-server.yml
+# File: tasks/01-mysql-server.yml
 #
 # Description:
 #   OSSEC server
