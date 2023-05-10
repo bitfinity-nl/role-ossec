@@ -53,7 +53,7 @@
     dest: "{{ item.dest }}"
   with_items:
     - { src: 'agent/preloaded-vars.conf.j2', dest: '/opt/ossec-agent-install/etc/preloaded-vars.conf', desc: 'unattended source installation ' }
-  when: ossec_agent_installed.exists
+  when: ossec_agent_installed.stat.exists
 
 - name: "Transfer these configuration files to client when ossec-agent is not installed"
   ansible.builtin.template:
@@ -61,7 +61,7 @@
     dest: "{{ item.dest }}"
   with_items:
     - { src: 'agent/preloaded-vars-new.conf.j2', dest: '/opt/ossec-agent-install/etc/preloaded-vars.conf', desc: 'unattended source installation ' }
-  when: not ossec_agent_installed.exists
+  when: not ossec_agent_installed.stat.exists
 # --
 
 - name: "Install or upgrade ossec agent"
