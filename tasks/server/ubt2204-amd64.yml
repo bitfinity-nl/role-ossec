@@ -10,8 +10,8 @@
 #   This taskfile contains te tasks
 #   for installing a OSSEC server.
 #
-- name: "server/01-mysql-server.yml"
-  include_tasks: server/01-mysql-server.yml
+#- name: "server/01-mysql-server.yml"
+#  include_tasks: server/01-mysql-server.yml
   
 - name: "Add APT packages requirements"
   ansible.builtin.apt:
