@@ -10,6 +10,11 @@
 #   This taskfile install the OSSEC
 #   agent on this system.
 #
+- name: "Check if OSSEC-agent is installed"
+  stat:
+    path: "/var/ossec-agent"
+  register: ossec_agent_installed
+    
 - name: "Add APT packages requirements"
   ansible.builtin.apt:
     pkg:
@@ -41,13 +46,23 @@
 - name: "Move pcre2 to /opt/ossec-agent-install"
   command: mv /tmp/pcre2 /opt/ossec-agent-install/src/external/
 
-- name: "Transfer configuration files to client"
+# --
+- name: "Transfer these configuration files to client when ossec-agent is installed"
   ansible.builtin.template:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
   with_items:
     - { src: 'agent/preloaded-vars.conf.j2', dest: '/opt/ossec-agent-install/etc/preloaded-vars.conf', desc: 'unattended source installation ' }
-    #- { src: server/ossec-control.service.j2, dest: '/etc/systemd/system/ossec-control.service', desc: 'systemd service' }
+  when: ossec_agent_installed.exists
+
+- name: "Transfer these configuration files to client when ossec-agent is not installed"
+  ansible.builtin.template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - { src: 'agent/preloaded-vars-new.conf.j2', dest: '/opt/ossec-agent-install/etc/preloaded-vars.conf', desc: 'unattended source installation ' }
+  when: not ossec_agent_installed.exists
+# --
 
 - name: "Install or upgrade ossec agent"
   ansible.builtin.shell: cd /opt/ossec-agent-install/ ; PCRE2_SYSTEM=yes ./install.sh
