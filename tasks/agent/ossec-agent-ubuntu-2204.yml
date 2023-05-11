@@ -64,42 +64,42 @@
   when: not ossec_agent_installed.stat.exists
 # --
 
-- name: "Install or upgrade ossec agent"
-  ansible.builtin.shell: cd /opt/ossec-agent-install/ ; PCRE2_SYSTEM=yes ./install.sh
+#- name: "Install or upgrade ossec agent"
+#  ansible.builtin.shell: cd /opt/ossec-agent-install/ ; PCRE2_SYSTEM=yes ./install.sh
   
-- name: "Add setting for repeating offenders Active Response section (/var/ossec/etc/ossec.conf) (WIP)"
-  ansible.builtin.blockinfile:
-    path: /var/ossec-agent/etc/ossec.conf
-    marker: "    <!-- {mark} ANSIBLE MANAGED BLOCK - Repeated offenders, Active Response -->"
-    insertafter: "</rootcheck>"
-    block: |2
+#- name: "Add setting for repeating offenders Active Response section (/var/ossec/etc/ossec.conf) (WIP)"
+#  ansible.builtin.blockinfile:
+#    path: /var/ossec-agent/etc/ossec.conf
+#    marker: "    <!-- {mark} ANSIBLE MANAGED BLOCK - Repeated offenders, Active Response -->"
+#    insertafter: "</rootcheck>"
+#    block: |2
     
-          <command>
-             <name>firewall-drop</name>
-             <executable>firewall-drop.sh</executable>
-             <expect>srcip</expect>
-             <timeout_allowed>yes</timeout_allowed>
-          </command>
+#          <command>
+#             <name>firewall-drop</name>
+#             <executable>firewall-drop.sh</executable>
+#             <expect>srcip</expect>
+#             <timeout_allowed>yes</timeout_allowed>
+#          </command>
+#
+#          <!-- Active Response Config -->
+#          <active-response>
+#            <!-- Specify a comma seperated list of timeouts per
+#               - re-incidence (in minutes).
+#              -->
+#            <repeated_offenders>30,60,120,240,480</repeated_offenders>
+#          </active-response>
 
-          <!-- Active Response Config -->
-          <active-response>
-            <!-- Specify a comma seperated list of timeouts per
-               - re-incidence (in minutes).
-              -->
-            <repeated_offenders>30,60,120,240,480</repeated_offenders>
-          </active-response>
-
-         <active-response>
-           <!-- Firewall Drop response. Block the IP for
-              - 600 seconds on the firewall (iptables,
-              - ipfilter, etc).
-              -->
-           <disabled>no</disabled>
-           <command>firewall-drop</command>
-           <agent_id>{{ ossec_agent_id }}</agent_id>
-           <location>local</location>
-           <rules_id></rules_id>
-           <level>6</level>
-           <timeout>600</timeout>
-         </active-response>
+#         <active-response>
+#           <!-- Firewall Drop response. Block the IP for
+#              - 600 seconds on the firewall (iptables,
+#              - ipfilter, etc).
+#              -->
+#           <disabled>no</disabled>
+#           <command>firewall-drop</command>
+#           <agent_id>{{ ossec_agent_id }}</agent_id>
+#           <location>local</location>
+#           <rules_id></rules_id>
+#           <level>6</level>
+#           <timeout>600</timeout>
+#         </active-response>
   
