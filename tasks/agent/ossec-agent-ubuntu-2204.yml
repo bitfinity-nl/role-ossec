@@ -41,7 +41,7 @@
 - name: "Download latest source of PCRE2 support"
   ansible.builtin.git:
     repo: 'https://github.com/PCRE2Project/pcre2.git'
-    dest: /opt/ossec-agent-install/src/external/
+    dest: /opt/ossec-agent-install/src/external/pcre2
 
 #- name: "Move pcre2 to /opt/ossec-agent-install"
 #  command: mv /opt/ossec-tools/pcre2 /opt/ossec-agent-install/src/external/
