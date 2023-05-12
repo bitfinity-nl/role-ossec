@@ -27,7 +27,7 @@
 
 - name: "Start docker MySQL database server"
   docker_container:
-    name: {{ mysql_database_name }}
+    name: "{{ mysql_database_name }}"
     image: mysql/mysql-server
     state: started
     restart: yes
@@ -38,6 +38,6 @@
       -  /opt/docker/guacamole/mysql/:/docker-entrypoint-initdb.d
     env:
       MYSQL_ROOT_PASSWORD: "{{ mysql_administrative_password }}"
-      MYSQL_DATABASE: "ossec"
+      MYSQL_DATABASE: "{{ mysql_database_name }}"
       MYSQL_USER: "ossec"
       MYSQL_PASSWORD: "{{ mysql_database_pass }}"
