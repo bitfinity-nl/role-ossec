@@ -27,7 +27,7 @@
 
 - name: "Start docker MySQL database server"
   docker_container:
-    name: guacamoledb
+    name: {{ mysql_database_name }}
     image: mysql/mysql-server
     state: started
     restart: yes
