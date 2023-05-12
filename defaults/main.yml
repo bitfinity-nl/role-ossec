@@ -2,6 +2,7 @@
 
 
 # -- MySQL server (Docker) --
+mysql_database_name                       : 'ossec'
 mysql_administrative_password             : 'changeme' 
 mysql_database_pass                       : 'changeme'
 
