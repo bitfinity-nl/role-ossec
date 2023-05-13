@@ -25,7 +25,7 @@
     - libsystemd-dev
     - jq
     # -- for database support --
-    #- mysql-dev
+    - mysql-dev
     #- postgresql-dev
     #- libsqlite3-dev
     state: present
