@@ -16,3 +16,7 @@ sudo /var/ossec/bin/ossec-logtest -t
 - https://www.digitalocean.com/community/tutorials/how-to-upgrade-ossec-2-8-1-to-ossec-2-8-2
 - https://www.mytinydc.com/en/blog/sysadmin-ossec-analyse-sql-grafana-contre-mesures/
 - https://www.ossec.net/docs/docs/manual/output/database-output.html
+
+
+## Div
+docker exec -it ossec bash
