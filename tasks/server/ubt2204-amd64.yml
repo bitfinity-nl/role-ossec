@@ -64,7 +64,7 @@
     
 - name: "Install or upgrade ossec server"
   ansible.builtin.shell: cd /opt/ossec-install/ ; PCRE2_SYSTEM=yes DATABASE=mysql ./install.sh
-
+ 
 - name: "Create symbolic link from /opt/ossec-install/etc to /etc/ossec"
   ansible.builtin.file:
     src: /var/ossec/etc
@@ -126,6 +126,25 @@
     line: '    <include>psad_rules.xml</include>'
     state: present
 
+- name: "Add setting for MariaDB/MySQL support (/var/ossec/etc/ossec.conf)"
+  ansible.builtin.blockinfile:
+    path: /var/ossec/etc/ossec.conf
+    marker: "    <!-- {mark} ANSIBLE MANAGED BLOCK - Database support -->"
+    insertbefore: "</ossec_config>"
+    block: |2
+
+          <ossec_config>
+              <database_output>
+                  <hostname>192.168.2.30</hostname>
+                  <username>ossecuser</username>
+                  <password>ossecpass</password>
+                  <database>ossec</database>
+              <type>mysql</type>
+          </database_output>
+
+#- name: "Enable OSSEC database support"
+#  ansible.builtin.shell: /var/ossec/bin/ossec-control enable database
+  
 - name: "Enable OSSEC service"
   ansible.builtin.systemd:
     name: ossec-control.service
