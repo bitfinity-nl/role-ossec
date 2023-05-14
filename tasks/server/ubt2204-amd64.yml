@@ -129,7 +129,7 @@
 - name: "Add setting for MariaDB/MySQL support (/var/ossec/etc/ossec.conf)"
   ansible.builtin.blockinfile:
     path: /var/ossec/etc/ossec.conf
-    marker: "    <!-- {mark} ANSIBLE MANAGED BLOCK - Database support -->"
+    marker: "  <!-- {mark} ANSIBLE MANAGED BLOCK - Database support -->"
     insertbefore: "</ossec_config>"
     block: |2
 
