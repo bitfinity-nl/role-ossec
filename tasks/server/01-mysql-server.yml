@@ -27,7 +27,7 @@
 
 - name: "Create directory for MySQL entrypoint /opt/docker/{{ mysql_database_name }}/mysql"
   file:
-    path: /opt/docker/"{{ mysql_database_name }}"/mysql/
+    path: "/opt/docker/{{ mysql_database_name }}/mysql/"
     state: directory
 
 - name: "Start docker MySQL database server"
