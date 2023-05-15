@@ -35,7 +35,7 @@
     ports:
       - "3306:3306"
     volumes:
-      -  /opt/docker/guacamole/mysql/:/docker-entrypoint-initdb.d
+      -  /opt/docker/"{{ mysql_database_name }}"/mysql/:/docker-entrypoint-initdb.d
     env:
       MYSQL_ROOT_PASSWORD: "{{ mysql_administrative_password }}"
       MYSQL_DATABASE: "{{ mysql_database_name }}"
