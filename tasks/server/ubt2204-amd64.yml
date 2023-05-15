@@ -64,21 +64,7 @@
   when: not stat_result.stat.exists
   no_log: true
   
-- name: "Add setting for MariaDB/MySQL support (/var/ossec/etc/ossec.conf)"
-  ansible.builtin.blockinfile:
-    path: /var/ossec/etc/ossec.conf
-    marker: "  <!-- {mark} ANSIBLE MANAGED BLOCK - Database support -->"
-    insertbefore: "</ossec_config>"
-    block: |2
 
-          <ossec_config>
-              <database_output>
-                  <hostname>192.168.2.30</hostname>
-                  <username>ossecuser</username>
-                  <password>ossecpass</password>
-                  <database>ossec</database>
-              <type>mysql</type>
-          </database_output>
 
 #- name: "Enable OSSEC database support"
 #  ansible.builtin.shell: /var/ossec/bin/ossec-control enable database
@@ -166,6 +152,22 @@
             <repeated_offenders>{{ ossec_repeated_offenders }}</repeated_offenders>
           </active-response>
 
+- name: "Add setting for MariaDB/MySQL support (/var/ossec/etc/ossec.conf)"
+  ansible.builtin.blockinfile:
+    path: /var/ossec/etc/ossec.conf
+    marker: "  <!-- {mark} ANSIBLE MANAGED BLOCK - Database support -->"
+    insertbefore: "</ossec_config>"
+    block: |2
+
+          <ossec_config>
+              <database_output>
+                  <hostname>192.168.2.30</hostname>
+                  <username>ossecuser</username>
+                  <password>ossecpass</password>
+                  <database>ossec</database>
+              <type>mysql</type>
+          </database_output>
+          
 - name: "Enable OSSEC service"
   ansible.builtin.systemd:
     name: ossec-control.service
