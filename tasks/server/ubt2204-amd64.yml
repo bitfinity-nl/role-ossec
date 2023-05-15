@@ -148,10 +148,16 @@
   stat:
     path: /opt/ossec-install/src/os_dbd/mysql.schema
   register: stat_result
-      
+
+- name: "Transfer MySQL/MariaDB database scheme to docker entrypoint (/opt/docker/{{ mysql_database_name }}/mysql/)" 
+  ansible.builtin.copy:
+    src: /opt/ossec-install/src/os_dbd/mysql.schema
+    dest: "/opt/docker/{{ mysql_database_name }}/mysql/mysql.schema"
+    
 - name: "Generate MySQL initialization script"
   raw: docker run --rm ossec/ossec mysql -u root -p < /opt/ossec-install/src/os_dbd/mysql.schema
   when: not stat_result.stat.exists
+
 
 #- name: "Enable OSSEC database support"
 #  ansible.builtin.shell: /var/ossec/bin/ossec-control enable database
