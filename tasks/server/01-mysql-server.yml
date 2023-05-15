@@ -25,6 +25,11 @@
     name:  mysql/mysql-server:latest
     source: pull
 
+- name: "Create directory for MySQL entrypoint /opt/docker/{{ mysql_database_name }}/mysql"
+  file:
+    path: /opt/docker/"{{ mysql_database_name }}"/mysql/
+    state: directory
+
 - name: "Start docker MySQL database server"
   docker_container:
     name: "{{ mysql_database_name }}"
