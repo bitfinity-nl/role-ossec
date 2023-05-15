@@ -46,14 +46,6 @@
   ansible.builtin.git:
     repo: 'https://github.com/ossec/ossec-hids.git'
     dest: /opt/ossec-install
-
-- name: "Add PSAD settings to Active Response section (/var/ossec/etc/ossec.conf)"
-  ansible.builtin.lineinfile:
-    path: /var/ossec/etc/ossec.conf
-    #regexp: '<include>local_rules\.xml<\/include>'
-    insertbefore: '<include>local_rules.xml</include>'
-    line: '    <include>psad_rules.xml</include>'
-    state: present
     
 #--- Database
 - name: "Check if initialization script exists"
@@ -152,7 +144,15 @@
     block: |2
           <allowed-ips>{{ item.ip }}</allowed-ips>
   loop: "{{ ossec_clients_allow_list }}"
-
+  
+- name: "Add PSAD settings to Active Response section (/var/ossec/etc/ossec.conf)"
+  ansible.builtin.lineinfile:
+    path: /var/ossec/etc/ossec.conf
+    #regexp: '<include>local_rules\.xml<\/include>'
+    insertbefore: '<include>local_rules.xml</include>'
+    line: '    <include>psad_rules.xml</include>'
+    state: present
+    
 - name: "Add setting for repeating offenders Active Response section (/var/ossec/etc/ossec.conf)"
   ansible.builtin.blockinfile:
     path: /var/ossec/etc/ossec.conf
