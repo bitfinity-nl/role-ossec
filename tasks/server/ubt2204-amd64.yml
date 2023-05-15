@@ -25,12 +25,12 @@
     - libsystemd-dev
     - jq
     # -- for database support --
-    - mariadb-client
+    #- mariadb-client
     #- libmysqld-dev
     - libmysqlclient-dev
-    #- mysql-dev
-    #- postgresql-dev
-    #- libsqlite3-dev
+    ##- mysql-dev
+    ##- postgresql-dev
+    ##- libsqlite3-dev
     state: present
   
 - name: "Remove existing installation folders when exists"
