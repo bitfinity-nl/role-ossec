@@ -39,6 +39,7 @@
     restart_policy: always
     ports:
       - "3306:3306"
+    container_default_behavior: no_defaults
     volumes:
       -  /opt/docker/"{{ mysql_docker_container_name }}"/mysql/:/docker-entrypoint-initdb.d
     env:
