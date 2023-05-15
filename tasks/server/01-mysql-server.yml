@@ -25,14 +25,14 @@
     name:  mysql/mysql-server:latest
     source: pull
 
-- name: "Create directory for MySQL entrypoint /opt/docker/{{ mysql_database_name }}/mysql"
+- name: "Create directory for MySQL entrypoint /opt/docker/{{ mysql_docker_container_name }}/mysql"
   file:
-    path: "/opt/docker/{{ mysql_database_name }}/mysql/"
+    path: "/opt/docker/{{ mysql_docker_container_name }}/mysql/"
     state: directory
 
 - name: "Start docker MySQL database server"
   docker_container:
-    name: "{{ mysql_database_name }}"
+    name: "{{ mysql_docker_container_name }}"
     image: mysql/mysql-server
     state: started
     restart: yes
@@ -40,7 +40,7 @@
     ports:
       - "3306:3306"
     volumes:
-      -  /opt/docker/"{{ mysql_database_name }}"/mysql/:/docker-entrypoint-initdb.d
+      -  /opt/docker/"{{ mysql_docker_container_name }}"/mysql/:/docker-entrypoint-initdb.d
     env:
       MYSQL_ROOT_PASSWORD: "{{ mysql_administrative_password }}"
       MYSQL_DATABASE: "{{ mysql_database_name }}"
