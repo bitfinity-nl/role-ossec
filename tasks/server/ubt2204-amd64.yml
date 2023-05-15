@@ -64,14 +64,6 @@
   when: not stat_result.stat.exists
   no_log: true
   
-
-
-#- name: "Enable OSSEC database support"
-#  ansible.builtin.shell: /var/ossec/bin/ossec-control enable database
-
-#--- Database
-
-
 - name: "Download latest source of PCRE2 support"
   ansible.builtin.git:
     repo: 'https://github.com/PCRE2Project/pcre2.git'
@@ -167,16 +159,16 @@
                   <database>ossec</database>
               <type>mysql</type>
           </database_output>
-          
+
+- name: "Enable OSSEC database support"
+  ansible.builtin.shell: /var/ossec/bin/ossec-control enable database
+  
 - name: "Enable OSSEC service"
   ansible.builtin.systemd:
     name: ossec-control.service
     daemon_reload: true
     enabled: true
     state: started
-
-- name: "Enable OSSEC database support"
-  ansible.builtin.shell: /var/ossec/bin/ossec-control enable database
 
 - name: "Configure UFW for OSSEC manager"
   community.general.ufw:
