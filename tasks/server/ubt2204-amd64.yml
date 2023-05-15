@@ -26,7 +26,8 @@
     - jq
     # -- for database support --
     - mariadb-client
-    - libmysqld-dev
+    #- libmysqld-dev
+    - libmysqlclient-dev
     #- mysql-dev
     #- postgresql-dev
     #- libsqlite3-dev
