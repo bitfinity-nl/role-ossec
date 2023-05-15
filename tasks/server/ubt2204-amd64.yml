@@ -166,14 +166,15 @@
             <repeated_offenders>{{ ossec_repeated_offenders }}</repeated_offenders>
           </active-response>
 
-
-
 - name: "Enable OSSEC service"
   ansible.builtin.systemd:
     name: ossec-control.service
     daemon_reload: true
     enabled: true
     state: started
+
+- name: "Enable OSSEC database support"
+  ansible.builtin.shell: /var/ossec/bin/ossec-control enable database
 
 - name: "Configure UFW for OSSEC manager"
   community.general.ufw:
