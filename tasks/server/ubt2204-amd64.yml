@@ -152,7 +152,7 @@
     block: |2
 
           <database_output>
-             <hostname>192.168.2.30</hostname>
+             <hostname>127.0.0.1</hostname>
              <username>{{ mysql_database_user }}</username>
              <password>{{ mysql_database_pass }}</password>
              <database>{{ mysql_database_name }}</database>
