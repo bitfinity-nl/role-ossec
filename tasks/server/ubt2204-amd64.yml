@@ -139,8 +139,9 @@
     remote_src: true
     
 - name: "Generate MySQL initialization script"
-  raw: docker run --rm ossec/ossec mysql -u root -p < /opt/ossec-install/src/os_dbd/mysql.schema
+  raw: docker exec -i {{ mysql_docker_container_name }} mysql -uroot -pchangeme {{ mysql_database_name }} < /opt/ossec-install/src/os_dbd/mysql.schema
   when: not stat_result.stat.exists
+  no_log: true
   
 - name: "Add setting for MariaDB/MySQL support (/var/ossec/etc/ossec.conf)"
   ansible.builtin.blockinfile:
