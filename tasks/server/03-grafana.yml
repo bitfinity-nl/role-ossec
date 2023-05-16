@@ -1,22 +1,27 @@
 ---
+#
 # https://grafana.com/grafana/download?edition=oss&platform=docker
 
-
-- name: Create Grafana Docker container
-  hosts: localhost
-  gather_facts: false
-  become: true
-
-  tasks:
-- name: Pull Grafana Docker image
+- name: "Install APT packages"
+  ansible.builtin.apt:
+    pkg:
+    - docker.io
+    - python3-docker
+    
+- name: "Pull Grafana Docker image"
   docker_image:
-    name: grafana/grafana:latest
-    state: present
+    name: grafana/grafana-oss:latest
+    source: pull
 
-- name: Create Grafana container
+- name: "Create directory for MySQL entrypoint /opt/docker/grafana/data"
+  file:
+    path: "/opt/docker/grafana/data"
+    state: directory
+    
+- name: "Create Grafana container"
   docker_container:
     name: grafana
-    image: grafana/grafana:latest
+    image: grafana/grafana-oss
     state: started
     restart: yes
     restart_policy: always
