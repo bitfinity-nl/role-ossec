@@ -1,5 +1,9 @@
 ---
 
+# -- Grafana --
+grafana_admin_user                        : 'changeme'
+grafana_admin_pass                        : 'changeme'
+
 
 # -- MySQL server (Docker) --
 mysql_docker_container_name               : 'ossec'
