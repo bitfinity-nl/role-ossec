@@ -17,6 +17,7 @@
   file:
     path: "/opt/docker/grafana/data"
     state: directory
+  with_items:
     
 - name: "Create Grafana container"
   docker_container:
@@ -28,10 +29,11 @@
     ports:
       - "3000:3000"
     #container_default_behavior: no_defaults
-    volumes:
-      - /opt/docker/grafana/data:/var/lib/grafana
-    #env:
-    #  GF_SECURITY_ADMIN_USER: "{{ grafana_admin_user }}"
-    #  GF_SECURITY_ADMIN_PASSWORD: "{{ grafana_admin_pass }}"
+    #volumes:
+    #  - /opt/docker/grafana/data:/var/lib/grafana
+    env:
+      GF_SECURITY_ADMIN_USER: "{{ grafana_admin_user }}"
+      GF_SECURITY_ADMIN_PASSWORD: "{{ grafana_admin_pass }}"
+      GF_INSTALL_PLUGINS: grafana-clock-panel,grafana-simple-json-datasource
 
 
