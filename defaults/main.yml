@@ -1,7 +1,7 @@
 ---
 
 # -- Grafana --
-grafana_admin_user                        : 'sysadmin'
+grafana_admin_user                        : 'grafadmin'
 grafana_admin_pass                        : 'changeme'
 
 
