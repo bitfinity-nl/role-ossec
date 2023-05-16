@@ -12,6 +12,9 @@
 #
 - name: "server/01-mysql-server.yml"
   include_tasks: server/01-mysql-server.yml
+
+- name: "server/03-grafana.yml"
+  include_tasks: server/03-grafana.yml
   
 - name: "Add APT packages requirements"
   ansible.builtin.apt:
