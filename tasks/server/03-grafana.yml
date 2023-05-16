@@ -13,10 +13,15 @@
     name: grafana/grafana-oss:latest
     source: pull
 
-- name: "Create directory for MySQL entrypoint /opt/docker/grafana/data"
+- name: "Create directory for Grafana entrypoint(s)"
   file:
-    path: "/opt/docker/grafana/data"
+    path: "{{ item }}"
     state: directory
+  with_items:
+    - /opt/docker/grafana/var/lib/grafana
+    - /opt/docker/grafana/etc/grafana
+    - /opt/docker/grafana/var/log/grafana
+    
     
 - name: "Create Grafana container"
   docker_container:
@@ -28,8 +33,12 @@
     ports:
       - "3000:3000"
     container_default_behavior: no_defaults
-    #volumes:
+    volumes:
     #  - /opt/docker/grafana/data:/var/lib/grafana
+      - /opt/docker/grafana/var/lib/grafana:/var/lib/grafana
+      - /opt/docker/grafana/etc/grafana:/etc/grafana
+      - /opt/docker/grafana/var/log/grafana:/var/log/grafana 
+      
     env:
       GF_SECURITY_ADMIN_USER: "{{ grafana_admin_user }}"
       GF_SECURITY_ADMIN_PASSWORD: "{{ grafana_admin_pass }}"
