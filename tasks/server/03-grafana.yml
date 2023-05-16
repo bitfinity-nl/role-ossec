@@ -33,7 +33,7 @@
     ports:
       - "3000:3000"
     #container_default_behavior: no_defaults
-    #volumes:
+    volumes:
     #  - /opt/docker/grafana/data:/var/lib/grafana
     #  - /opt/docker/grafana/var/lib/grafana:/var/lib/grafana
     #  - /opt/docker/grafana/etc/grafana:/etc/grafana
