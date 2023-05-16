@@ -1,0 +1,27 @@
+---
+# https://grafana.com/grafana/download?edition=oss&platform=docker
+
+
+- name: Create Grafana Docker container
+  hosts: localhost
+  gather_facts: false
+  become: true
+
+  tasks:
+- name: Pull Grafana Docker image
+  docker_image:
+    name: grafana/grafana:latest
+    state: present
+
+- name: Create Grafana container
+  docker_container:
+    name: grafana
+    image: grafana/grafana:latest
+    state: started
+  env:
+    GF_SECURITY_ADMIN_USER: admin
+    GF_SECURITY_ADMIN_PASSWORD: admin_password
+  volumes:
+    - /path/to/grafana/data:/var/lib/grafana
+  ports:
+    - "3000:3000"
