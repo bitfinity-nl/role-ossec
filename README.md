@@ -6,6 +6,11 @@ Open Source HIDS
 ```
 sudo /var/ossec/bin/ossec-logtest -t
 ```
+### Unblock ###
+```
+var/ossec/active-response/bin/host-deny.sh delete 1.1.1.1 
+/var/ossec/active-response/bin/firewall-drop.sh delete 1.1.1.1 
+```
 
 ## Source(s)
 - https://www.ossec.net/
