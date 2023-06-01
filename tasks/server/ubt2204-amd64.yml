@@ -105,7 +105,7 @@
     #- { field: 'email_notification>', find: 'yes', replace: '{{ ossec_email_notification }}' }
 #    - { field: 'email_to', find: 'daniel\.cid@example\.com', replace: '{{ ossec_email_to }}' }
 #    - { field: 'smtp_server', find: 'smtp\.example\.com\.', replace: '{{ ossec_smtp_server }}' }
-    - { field: 'email_from', find: '<email_from>ossecm@.*</email_from>', replace: '<email_from>{{ ossec_user_email_from }}</email_from>' }
+    - { field: 'email_from', find: '<email_from>.*</email_from>', replace: '<email_from>{{ ossec_user_email_from }}</email_from>' }
 
 
 - name: "Add ip to allowlist in global section (/var/ossec/etc/ossec.conf)"
