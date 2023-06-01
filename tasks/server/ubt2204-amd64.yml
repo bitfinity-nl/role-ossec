@@ -155,7 +155,7 @@
     block: |2
 
           <database_output>
-             <hostname>{{ ansible_default_ipv4 }}</hostname>
+             <hostname>{{ ansible_default_ipv4.address }}</hostname>
              <username>{{ mysql_database_user }}</username>
              <password>{{ mysql_database_pass }}</password>
              <database>{{ mysql_database_name }}</database>
