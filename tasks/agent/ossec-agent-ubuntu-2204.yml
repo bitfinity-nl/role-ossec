@@ -108,6 +108,7 @@
 
 - name: "Touch file /queue/rids/sender"
   ansible.builtin.file:
-    path: /queue/rids/sender
+    path: /var/ossec-agent/queue/rids/sender
     state: touch
+    mode: '0644'
 
