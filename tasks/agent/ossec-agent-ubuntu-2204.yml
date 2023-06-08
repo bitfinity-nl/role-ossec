@@ -105,4 +105,9 @@
            <level>6</level>
            <timeout>600</timeout>
          </active-response>
-  
+
+- name: "Touch file /queue/rids/sender"
+  ansible.builtin.file:
+    path: /queue/rids/sender
+    state: touch
+
