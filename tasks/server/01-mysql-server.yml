@@ -47,3 +47,4 @@
       MYSQL_DATABASE: "{{ mysql_database_name }}"
       MYSQL_USER: "{{ mysql_database_user }}"
       MYSQL_PASSWORD: "{{ mysql_database_pass }}"
+    container_default_behavior: no_defaults
